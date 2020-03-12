@@ -19,7 +19,7 @@ class Navbar extends Component {
     render() {
         const {isAuthenticated} = this.props.auth;
         const authLinks = (
-            <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+            <div className='collpase navbar-collapse' id='navbarNavDropdown'>
               <Link className='navbar-brand' to='/user'><FontAwesomeIcon icon={faBookOpen} style={{marginRight: '8px'}}/>Company</Link>
                 <ul className='navbar-nav mr-auto'>
                     <li className='navbar-item'>
@@ -33,7 +33,7 @@ class Navbar extends Component {
              </div>
         )
       const guestLinks = (
-        <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+        <div className='collpase navbar-collapse' id='navbarNavDropdown'>
         <ul className='navbar-nav mr-auto'>
             <Link className='navbar-brand' to='/login'><FontAwesomeIcon icon={faBookOpen} style={{marginRight: '8px'}} />Company</Link>
         </ul>
@@ -46,8 +46,13 @@ class Navbar extends Component {
       )
         return(
             <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
-                <div className='container'>
-                    {isAuthenticated ? authLinks : guestLinks}
+                <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" >
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className='collapse navbar-collapse' id='navbarNavDropdown'>
+                    <div className='container'>
+                         {isAuthenticated ? authLinks : guestLinks}
+                    </div>
                 </div>
             </nav>
         )
